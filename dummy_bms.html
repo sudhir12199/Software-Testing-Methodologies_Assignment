@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dummy BookMyShow</title>
+</head>
+<body>
+    <h1>Dummy BookMyShow Page</h1>
+
+    <!-- Location selection -->
+    <label for="city">Select City:</label>
+    <select id="city">
+        <option value="MUMBAI">Mumbai</option>
+        <option value="DELHI">Delhi</option>
+        <option value="BANGALORE">Bangalore</option>
+    </select>
+    <br><br>
+
+    <!-- Email input -->
+    <label for="email">Email:</label>
+    <input type="text" id="email">
+    <br><br>
+
+    <!-- Number of tickets -->
+    <label for="tickets">Number of Tickets:</label>
+    <input type="number" id="tickets" min="0" max="20">
+    <br><br>
+
+    <!-- Submit button -->
+    <button id="submit">Submit</button>
+
+    <!-- Result display -->
+    <p id="result"></p>
+
+    <script>
+        document.getElementById("submit").addEventListener("click", function() {
+            const tickets = parseInt(document.getElementById("tickets").value);
+            const email = document.getElementById("email").value;
+
+            let ticketResult = (tickets >= 1 && tickets <= 10) ? "Accepted" : "Rejected";
+            let emailResult = /^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email) ? "Accepted" : "Rejected";
+
+            document.getElementById("result").innerText =
+                "Tickets: " + ticketResult + " | Email: " + emailResult;
+        });
+    </script>
+</body>
+</html>
